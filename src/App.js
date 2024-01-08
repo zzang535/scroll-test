@@ -10,7 +10,7 @@ import "./assets/tailwind.css";
 function App() {
   return (
     <Router>
-      <div className="bg-gray-300 p-8">
+      <div className="bg-gray-300 p-4">
         <div>
           <Link to="/scroll">[TEST - 3D 두루마리 && 이미지 3차원 이동]</Link>
         </div>

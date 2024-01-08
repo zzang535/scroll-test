@@ -103,7 +103,7 @@ export default function Component() {
   return (
     <div
       id="animatedElement"
-      className="border border-solid border-black"
+      className="border border-solid border-black pt-16"
       style={{ opacity: 1, height: "3000px" }}
     >
       <div className="fixed">
