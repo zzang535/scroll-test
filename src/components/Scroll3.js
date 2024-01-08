@@ -1,11 +1,12 @@
 // module
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 export default function Component() {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [texture, setTexture] = useState(null);
-  const rendererRef = useRef(null);
+  const rendererRef = useRef(null); // 랜더러 참조
+  const cylinderRef = useRef(null); // 실린더 참조
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,12 +22,12 @@ export default function Component() {
   }, []);
 
   useEffect(() => {
+    // texture load
     const textureLoader = new THREE.TextureLoader();
-    const texture = textureLoader.load(
+    textureLoader.load(
       "/Brick_Wall_009_COLOR.jpg",
       (texture) => {
         console.log("텍스쳐 로드 완료");
-        console.log(texture);
 
         // scene init
         const scene = new THREE.Scene();
@@ -38,6 +39,8 @@ export default function Component() {
           0.1,
           1000
         );
+        camera.position.set(0, 0, 40);
+        scene.add(camera);
 
         // renderer init
         const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -47,13 +50,19 @@ export default function Component() {
         // append
         rendererRef.current.appendChild(renderer.domElement);
 
-        const geometry = new THREE.CylinderGeometry(5, 5, 30, 32);
+        // axis helper init
+        const axesHelper = new THREE.AxesHelper(30);
+        scene.add(axesHelper);
+
+        // mesh init
+        const geometry = new THREE.CylinderGeometry(5, 5, 40, 32);
         const material = new THREE.MeshBasicMaterial({ map: texture });
-        const cylinder = new THREE.Mesh(geometry, material);
+        cylinderRef.current = new THREE.Mesh(geometry, material);
 
-        scene.add(cylinder);
+        scene.add(cylinderRef.current);
 
-        camera.position.z = 30;
+        // controls init
+        // new OrbitControls(camera, renderer.domElement);
 
         // 애니메이션 루프
         const animate = function () {
@@ -72,6 +81,20 @@ export default function Component() {
       }
     );
   }, []);
+
+  // 스크롤에 따라 실린더 위치 업데이트
+  useEffect(() => {
+    if (cylinderRef.current) {
+      const newPositionX = scrollPosition * -1 * 0.01;
+      cylinderRef.current.position.x = newPositionX;
+
+      const newPositionZ = scrollPosition * 1 * 0.0033;
+      cylinderRef.current.position.z = newPositionZ;
+
+      const rotationAngle = scrollPosition * -1 * 0.001;
+      cylinderRef.current.rotation.y = rotationAngle;
+    }
+  }, [scrollPosition]); // 스크롤 위치 변경에 따라 실행
 
   return (
     <div className="h-99999">
