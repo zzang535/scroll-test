@@ -74,9 +74,11 @@ export default function Component() {
   }, []);
 
   return (
-    <div
-      className="fixed border border-solid border-black"
-      ref={rendererRef}
-    ></div>
+    <div className="h-99999">
+      <div
+        className="fixed border border-solid border-black"
+        ref={rendererRef}
+      ></div>
+    </div>
   );
 }

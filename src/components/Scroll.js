@@ -103,7 +103,8 @@ export default function Component() {
   return (
     <div
       id="animatedElement"
-      style={{ opacity: 1, border: "1px solid red", height: "3000px" }}
+      className="border border-solid border-black"
+      style={{ opacity: 1, height: "3000px" }}
     >
       <div className="fixed">
         <div>scroll : {scrollPosition}</div>
