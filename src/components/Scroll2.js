@@ -8,7 +8,7 @@ import { Tween } from "react-gsap";
 // assets
 
 // style
-import "../assets/tailwind.css";
+import "./Scroll2.css";
 
 // module init
 gsap.registerPlugin(ScrollTrigger);
@@ -64,7 +64,7 @@ export default function Component() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="Scroll2">
       <div className="fixed">scroll: {scrollPosition}</div>
       {/* <Tween
         to={{

@@ -18,7 +18,7 @@ function App() {
           <Link to="/scroll2">[TEST - 긴 스크롤 && 박스 2차원 이동]</Link>
         </div>
         <div>
-          <Link to="/scroll3">[TEST - 두루마리 진입]</Link>
+          <Link to="/scroll3">[TEST - 3D 두루마리 진입하는 부분]</Link>
         </div>
       </div>
       <Routes>
