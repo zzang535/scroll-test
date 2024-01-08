@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+import Scroll from "./components/Scroll";
+import Scroll2 from "./components/Scroll2";
+import Scroll3 from "./components/Scroll3";
+
+import "./assets/tailwind.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="mb-16">
+        <div>
+          <Link to="/scroll">[TEST - 3D 두루마리 && 이미지 3차원 이동]</Link>
+        </div>
+        <div>
+          <Link to="/scroll2">[TEST - 긴 스크롤 && 박스 2차원 이동]</Link>
+        </div>
+        <div>
+          <Link to="/scroll3">[TEST - 두루마리 진입]</Link>
+        </div>
+      </div>
+      <Routes>
+        <Route path="/scroll" element={<Scroll />}></Route>
+        <Route path="/scroll2" element={<Scroll2 />}></Route>
+        <Route path="/scroll3" element={<Scroll3 />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
