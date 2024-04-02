@@ -11,14 +11,14 @@ function App() {
   return (
     <Router>
       <div className="bg-gray-300 p-4">
-        <div>
+        {/* <div>
           <Link to="/scroll">[TEST - 3D 두루마리 && 이미지 3차원 이동]</Link>
+        </div> */}
+        <div>
+          <Link to="/scroll2">[TEST - 박스 2차원 이동]</Link>
         </div>
         <div>
-          <Link to="/scroll2">[TEST - 긴 스크롤 && 박스 2차원 이동]</Link>
-        </div>
-        <div>
-          <Link to="/scroll3">[TEST - 3D 두루마리 진입하는 부분]</Link>
+          <Link to="/scroll3">[TEST - 3D 두루마리]</Link>
         </div>
       </div>
       <Routes>
